@@ -1,6 +1,7 @@
 // Données fictives fournies. Ne pas modifier ce tableau lors des opérations CRUD.
 // Chaque voiture possède un identifiant unique.
-export const voituresInitiales = [
+
+ export const voituresInitiales = [
   {
     "id": 1,
     "marque": "Dacia",
@@ -56,3 +57,9 @@ export const voituresInitiales = [
     "statut": "Disponible"
   }
 ];
+
+
+
+
+
+
