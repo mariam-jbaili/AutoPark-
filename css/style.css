@@ -456,6 +456,7 @@ tbody tr:hover {
     display: none;
   }
 }
+
 @media (max-width: 760px) {
   .container {
     width: calc(100% - 32px);
