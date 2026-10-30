@@ -7,7 +7,7 @@ const boutonAnnuler = document.getElementById("annuler-modification");
 function afficher(teble = voituresInitiales) {
   const liste = document.getElementById("liste-voitures");
   liste.innerHTML = "";
- teble.forEach((d) => {
+  teble.forEach((d) => {
     const tr_global = document.createElement("tr");
 
     const td_Marque = document.createElement("td");
@@ -104,12 +104,14 @@ function ajouter() {
       categorie: categorie.value,
       prixJour: prix_jour.value,
       statut: statut.value,
+      if () {
+        
+      }
     };
     voituresInitiales.push(nouvelle_voiture);
     marque.value = " ";
     modele.value = " ";
     immatriculation.value = " ";
-    
   } else {
     const voiture = voituresInitiales.find(function (d) {
       return d.id == IdModification;
@@ -130,8 +132,7 @@ function ajouter() {
     immatriculation.value = " ";
     prix_jour.value = " ";
     prix_jour.value = " ";
-    IdModification = null ;
-    
+    IdModification = null;
   }
   nextID++;
   afficher();
@@ -154,29 +155,73 @@ button_ajouter.addEventListener("click", function (event) {
 
 // function modification
 function modifier_voiture(d) {
-  IdModification = d.id; 
-  
+  IdModification = d.id;
 }
-
 // function suprimer
 function suprimer_voiture(d) {
-  voituresInitiales.splice(voituresInitiales.indexOf(d), 1);
-  afficher();
+    if (confirm(" tu veux suprimer cet voitur !?") == true) {
+         voituresInitiales.splice(voituresInitiales.indexOf(d), 1);
+          afficher();
+     } 
 }
-// function Recherche 
-
+// function Recherche
 function Recherche_voiture() {
-    console.log(" saluttt ")
-    let voituresFiltrees = voituresInitiales.filter(function(voiture) {
-        return (voiture.marque.toLowerCase().startsWith(nom_rechrche.value.toLowerCase())||
-                voiture.modele.toLowerCase().startsWith(nom_rechrche.value.toLowerCase()) ||
-                voiture.immatriculation.toLowerCase().startsWith(nom_rechrche.value.toLowerCase()) 
-    )
-    });
-    
-    
-    afficher(voituresFiltrees);
-}
-const nom_rechrche = document.getElementById("recherche");
- nom_rechrche.addEventListener("input", Recherche_voiture)
+  let voituresFiltrees = voituresInitiales.filter(function (voiture) {
+    let recherche =
+      voiture.marque
+        .toLowerCase()
+        .startsWith(nom_rechrche.value.toLowerCase()) ||
+      voiture.modele
+        .toLowerCase()
+        .startsWith(nom_rechrche.value.toLowerCase()) ||
+      voiture.immatriculation
+        .toLowerCase()
+        .startsWith(nom_rechrche.value.toLowerCase());
 
+    let categorie =
+      filtre_categorie.value === "" ||
+      filtre_categorie.value === voiture.categorie;
+
+    let statut =
+      filtre_statut.value === "" || filtre_statut.value === voiture.statut;
+
+    return recherche && categorie && statut;
+  });
+  Trier(voituresFiltrees)
+}
+
+function Trier(filtredCars) {
+  if (Trier_voiture.value === "croissant") {
+    for (let i = 0; i < filtredCars.length - 1; i++) {
+      for (let j = i + 1; j < filtredCars.length; j++) {
+        if (Number(filtredCars[i].prixJour) > Number(filtredCars[j].prixJour)) {
+          let temp = filtredCars[i];
+          filtredCars[i] = filtredCars[j];
+          filtredCars[j] = temp;
+        }
+      }
+    }
+  } else if (Trier_voiture.value === "decroissant") {
+    for (let i = 0; i < filtredCars.length - 1; i++) {
+      for (let j = i + 1; j < filtredCars.length; j++) {
+        if (Number(filtredCars[i].prixJour) < Number(filtredCars[j].prixJour)) {
+          let temp = filtredCars[i];
+          filtredCars[i] = filtredCars[j];
+          filtredCars[j] = temp;
+        }
+      }
+    }
+  }
+  console.log(filtredCars);
+  afficher(filtredCars);
+}
+const Trier_voiture = document.getElementById("tri-prix");
+      Trier_voiture.addEventListener("change", function () {
+          Recherche_voiture();
+       });
+const filtre_categorie = document.getElementById("filtre-categorie");
+filtre_categorie.addEventListener("change", Recherche_voiture);
+const filtre_statut = document.getElementById("filtre-statut");
+filtre_statut.addEventListener("change", Recherche_voiture);
+const nom_rechrche = document.getElementById("recherche");
+nom_rechrche.addEventListener("input", Recherche_voiture);
