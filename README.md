@@ -1,107 +1,104 @@
-# AutoPark — Starter apprenant
+# AutoPark — Gestion du parc automobile et location
 
-Projet individuel · 5 jours · HTML / CSS / JavaScript Vanilla ES6+
+## Présentation du projet
 
-## Ce qui est fourni
+AutoPark est une application web développée dans le cadre d'un projet individuel chez YouCode.
 
-- `voitures.html` : la page **Gestion du parc**, sans images.
-- `css/style.css` : le style complet et responsive.
-- `js/data.js` : six voitures fictives sous forme de tableau d'objets exporté.
-- `js/voitures.js` : point d'entrée JavaScript avec des étapes, sans implémentation.
+L'objectif est de proposer une interface permettant de gérer un parc automobile et de créer un parcours de location dynamique pour les clients de l'agence fictive Atlas Auto.
 
-Le formulaire, la recherche, les filtres et les boutons sont **statiques**.
-Les six lignes du tableau sont uniquement des exemples HTML. Elles correspondent
-aux données fournies et doivent être remplacées par votre affichage JavaScript.
-Aucune fonctionnalité JavaScript du brief n'est réalisée dans ce starter.
+Le projet est réalisé avec HTML, CSS et JavaScript Vanilla (ES6+), sans framework ni backend.
 
-## Lancer le projet
+## Technologies utilisées
 
-1. Ouvrir le dossier dans VS Code.
-2. Démarrer un serveur local avec Live Server, puis ouvrir `voitures.html`.
-3. Autre possibilité, si Python est installé : `python -m http.server 8000`,
-   puis ouvrir `http://localhost:8000/voitures.html`.
+- HTML5 : structure des pages.
+- CSS3 : mise en forme et responsive design.
+- JavaScript ES6+ : logique et interactions dynamiques.
+- LocalStorage : sauvegarde et récupération des données.
+- JSON : manipulation et stockage des données.
+- Git & GitHub : gestion des versions et collaboration avec les branches.
 
-Un serveur local est nécessaire pour travailler avec les modules ES6.
-La racine du serveur ne contient pas encore de page `index.html` : ouvrir
-explicitement `voitures.html` au démarrage.
+## Fonctionnalités du projet
 
-## La seconde page est à créer
+### 1. Gestion du parc automobile
 
-Le lien « Dashboard » pointe vers `index.html`. **Ce fichier n'est pas fourni** :
-c'est votre deuxième mission. Tant que vous ne l'avez pas créé, ce lien ne mène
-pas à une page existante.
+- Affichage dynamique des voitures.
+- Ajout d'une nouvelle voiture.
+- Modification des informations d'une voiture.
+- Annulation de la modification.
+- Suppression d'une voiture avec confirmation.
+- Recherche de voitures.
+- Filtrage par statut et catégorie.
+- Tri des voitures selon leur prix.
+- Validation des champs du formulaire.
+- Vérification de l'unicité de l'immatriculation.
 
-Créer sa structure HTML, son CSS et son JavaScript. Afficher quatre compteurs :
-total, disponibles, louées et en maintenance. Lire les mêmes données que la page
-de gestion. Aucun graphique ni bibliothèque de graphiques n'est nécessaire.
+### 2. Dashboard
 
-## Travail JavaScript à réaliser
+- Affichage du nombre total de voitures.
+- Nombre de voitures disponibles.
+- Nombre de voitures louées.
+- Nombre de voitures en maintenance.
+- Actualisation des statistiques à partir des données sauvegardées.
 
-1. Importer les données initiales et générer les lignes du tableau.
-2. Ajouter une voiture et valider les champs.
-3. Modifier une voiture via le même formulaire et permettre l'annulation.
-4. Supprimer après confirmation.
-5. Combiner recherche, filtres et tri numérique des prix.
-6. Sauvegarder avec `localStorage` et JSON ; récupérer les données au chargement.
-7. Organiser les responsabilités dans des modules réutilisables.
-8. Réaliser le dashboard et vérifier les données sur les deux pages.
+### 3. Parcours de location — AutoPark 2
 
-Utiliser les données initiales uniquement en l'absence de sauvegarde. Un tableau
-vide sauvegardé doit rester vide. Les compteurs sont actualisés à l'ouverture
-ou au rechargement du dashboard.
+Mise en place d'un parcours de location organisé en plusieurs étapes :
 
-## Repères du HTML
+- Sélection d'un véhicule disponible.
+- Choix des dates de début et de fin de location.
+- Choix du mode de récupération.
+- Configuration des options de location.
+- Récapitulatif de la réservation.
+- Gestion des informations du parcours avec un objet JavaScript.
 
-| Élément | Sélecteur |
-| --- | --- |
-| Formulaire | `#formulaire-voiture` |
-| Identifiant en cours de modification | `#voiture-id` |
-| Titre du formulaire | `#titre-formulaire` |
-| Marque / modèle | `#marque` / `#modele` |
-| Immatriculation | `#immatriculation` |
-| Catégorie / statut | `#categorie` / `#statut` |
-| Prix | `#prix-jour` |
-| Bouton d'enregistrement | `#bouton-enregistrer` |
-| Annulation de la modification | `#annuler-modification` |
-| Message du formulaire | `#message-formulaire` |
-| Corps du tableau | `#liste-voitures` |
-| Recherche | `#recherche` |
-| Filtres | `#filtre-statut` / `#filtre-categorie` |
-| Tri | `#tri-prix` |
-| Réinitialisation | `#reinitialiser-filtres` |
-| Message de gestion | `#message-parc` |
-| État vide / texte | `#etat-vide` / `#texte-etat-vide` |
+### 4. Gestion des données
 
-Les boutons de démonstration portent `data-action="modifier"` ou
-`data-action="supprimer"`, et `data-id` indique l'identifiant de la voiture.
-Conserver ces repères lors de la génération dynamique si vous les utilisez.
+- Utilisation de `localStorage` pour conserver les données.
+- Utilisation de `JSON.stringify()` et `JSON.parse()`.
+- Récupération des voitures enregistrées entre les différentes pages.
+- Synchronisation des données entre la gestion du parc, le dashboard et le parcours de location.
 
-Les éléments de message d'erreur sont déjà placés sous les champs, par exemple
-`#erreur-marque` et `#erreur-prix-jour`. Ajouter `aria-invalid="true"` aux champs
-invalides et le retirer après correction. Le formulaire utilise `novalidate`
-pour vous laisser développer vos propres vérifications JavaScript.
+## Organisation du projet
 
-Retirer ou remettre l'attribut `hidden` pour contrôler l'état vide et le bouton
-d'annulation. Les classes `success` et `error` peuvent être appliquées aux messages.
+```text
+AutoPark/
+│
+├── index.html
+├── voitures.html
+├── location.html
+│
+├── css/
+│   ├── style.css
+│   └── location.css
+│
+├── js/
+│   ├── data.js
+│   ├── voitures.js
+│   └── location.js
+│
+└── README.md
+```
 
-Styles de statut disponibles : `.badge-disponible`, `.badge-louee`,
-`.badge-maintenance`, avec la classe commune `.badge`.
+## Lancement du projet
 
-Le tableau défile horizontalement dans sa propre zone sur les petits écrans.
-Le reste de la page reste adapté à la largeur de l'écran.
+1. Cloner le dépôt GitHub :
 
-## À vérifier avant de rendre
+```bash
+git clone https://github.com/mariam-jbaili/AutoPark-.git
+```
 
-- Ajout valide et refus des champs vides ou composés uniquement d'espaces.
-- Prix positif et immatriculation unique, y compris lors d'une modification.
-- Annulation et confirmation des actions.
-- Recherche, filtres et tri utilisés ensemble.
-- Conservation des données après rechargement, même quand le parc est vide.
-- Exactitude des quatre compteurs et navigation entre les deux pages.
-- Utilisation sur mobile et absence d'erreurs dans la console.
+2. Ouvrir le dossier dans Visual Studio Code.
+3. Lancer le projet avec l'extension Live Server.
+4. Accéder à `index.html` pour le Dashboard.
 
-Compléter ensuite ce README avec vos choix, les fonctionnalités réalisées,
-l'organisation de vos modules et le lien de déploiement.
+## Déploiement
 
+Le projet est accessible en ligne sur GitHub Pages :
 
 https://mariam-jbaili.github.io/AutoPark-/
+
+## Auteur
+
+Projet individuel réalisé dans le cadre de la formation YouCode — 2026/2027.
+
+**Technologies :** HTML5, CSS3, JavaScript Vanilla ES6+ et Git.
