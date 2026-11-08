@@ -458,6 +458,12 @@ tbody tr:hover {
 }
 
 @media (max-width: 760px) {
+  .menu{
+    display: block;
+  }
+  .nav{
+    display: none;
+  }
   .container {
     width: calc(100% - 32px);
   }
@@ -503,6 +509,12 @@ tbody tr:hover {
   }
 }
 @media (max-width: 480px) {
+  .menu{
+    display: block;
+  }
+  .nav{
+    display: none;
+  }
   .form-grid,
   .toolbar {
     grid-template-columns: 1fr;
