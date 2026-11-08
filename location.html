@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -11,7 +12,7 @@
     <link rel="stylesheet" href="css/location.css" />
     <script type="module" src="js/location.js"></script>
 </head>
-
+    
 <body>
     <a class="skip-link" href="#contenu">Aller au contenu</a>
     <header class="site-header">
@@ -32,6 +33,7 @@
     </header>
 
     <main id="contenu" class="container main-content">
+
         <section class="page-intro" aria-labelledby="titre-page">
             <p class="eyebrow">VOTRE LOCATION SUR MESURE</p>
             <h1 id="titre-page">Composez votre location</h1>
@@ -55,17 +57,23 @@
                 <span>Récapitulatif</span>
             </div>
         </section>
-        <section class="vehicule">
-            <article class="panel article">
-                <div class="section_heading">
-                    <div>
-                        <p class="eyebrow">01 / VÉHICULE</p>
-                        <h2>Choisissez votre véhicule</h2>
+          <!-- les etapes ============================================================================================================ -->
+        <section class="les_etapes">
+             <div class="panel etapes">
+                        <!-- Contenu étape 1           --------------------------------------- --> 
+                <article class="vehicule" id="vehicule">
+           
+
+                    <div class="section_heading">
+                        <div>
+                            <p class="eyebrow">01 / VÉHICULE</p>
+                            <h2>Choisissez votre véhicule</h2>
+                        </div>
+                        <span class="section-note">Sélectionnez une voiture disponible et votre période de
+                            location.</span>
                     </div>
-                    <span class="section-note">Sélectionnez une voiture disponible et votre période de location.</span>
-                </div>
-                <div class="les_cartes" id="Liste_cartes">
-                    <!-- <div class="carte ">
+                    <div class="les_cartes" id="Liste_cartes">
+                        <!-- <div class="carte ">
                         <span class="header_carte">
                             <span class="categorie">Citadine</span>
                             <input type="radio" name="voiture" id ="selection">
@@ -92,35 +100,119 @@
                         <p class="statut">Disponible</p>
                         <p class="prix">250 MAD / jour</p>
                     </div> -->
-                </div>
-                <div class="periode">
-                      <h3>Votre période de location</h3>
-
-                      <form >
+                    </div>
+                    <div class="periode">
+                        <h3>Votre période de location</h3>
+                        <form>
+                            <div>
+                                <label for="date_depart">Date de début *</label><br>
+                                <input type="date" name="date_depart" id="date_depart" required><br>
+                                <small id="erreur-datedebut" class="field-error"></small>
+                            </div>
+                            <div>
+                                <label for="date_fin">Date de fin *</label><br>
+                                <input type="date" name="date_fin" id="date_fin"><br>
+                                <small id="erreur-datefin" class="field-error"></small>
+                            </div>
+                        </form>
+                    </div>
+                </article>
+                        <!-- Contenu étape 2          --------------------------------------- --> 
+                <article class="Recuperation" id="Recuperation">
+                    <div class="section_heading">
                         <div>
-                         <label for="date_depart">Date de début *</label><br>
-                         <input type="date" name="date_depart" id="date_depart" required><br>
-                         </div>
-                         <div>
-                         <label for="date_fin">Date de fin *</label><br>
-                         <input type="date" name="date_fin" id="date_fin"><br>
-                         </div>
-                      </form>
-                 
+                            <p class="eyebrow">02 / RÉCUPÉRATION</p>
+                            <h2>Composez votre location</h2>
+                        </div>
+                        <span class="section-note">Choisissez le lieu qui vous convient.</span>
+                    </div>
+                    <div class="lieu">
+                        <label for="agence" class="label">
+                            <input type="radio" id="agence" name="recuperation" value="agence">
+                            <h3>À l’agence</h3>
+                            <p>Gratuit</p>
+                        </label>
+
+                        <label for="aeroport" class="label">
+                            <input type="radio" id="aeroport" name="recuperation" value="aeroport">
+                            <h3>À l’aéroport</h3>
+                            <p>+150 MAD</p>
+                        </label>
+                        <label for="adresse" class="label">
+                            <input type="radio" id="adresse" name="recuperation" value="adresse">
+                            <h3>À une adresse</h3>
+                            <p>+100 MAD</p>
+                        </label>
+                    </div>
+                    <h3>Informations de récupération</h3>
+                    <form action="recuperation">
+                        <div>
+                        <label for="ville">Ville *</label><br>
+                        <input type="text" id="ville"><br>
+                        </div>
+                        <div>
+                        <label for="Adresse">Adresse complète *</label><br>
+                        <input type="text" id="Adresse"><br>
+                        </div>
+                        <div>
+                        <label for="heure">Heure de livraison *</label><br>
+                        <input type="time" id="heure"><br>
+                        </div>
+
+                    </form>
+                </article>
+                          <!-- Contenu étape 3          --------------------------------------- --> 
+                <article class="Options" id="Options">
+                    <div class="section_heading">
+                        <div>
+                            <p class="eyebrow">03 / OPTIONS</p>
+                            <h2>Les petits plus de votre location</h2>
+                        </div>
+                        <span class="section-note">Ces options sont facultatives et facturées par jour.</span>
+                    </div>
+                    <div class="options-container">
+                        <label class="option-card"  for="Siege" >
+                            <input type="checkbox" name="options" id="Siege">
+                            <div class="option-info">
+                                <h4 class="option-title">Siège bébé</h4>
+                                <p class="option-price">30 MAD / jour · soit 90 MAD pour 3 jours</p>
+                            </div>
+                        </label>
+
+                        <label class="option-card" for="Conducteur">
+                            <input type="checkbox" name="options" id="Conducteur">
+                            <div class="option-info">
+                                <h4 class="option-title">Conducteur supplémentaire</h4>
+                                <p class="option-price">200 MAD / jour · soit 600 MAD pour 3 jours</p>
+                            </div>
+                        </label>
+                    </div>
+
+                </article>
+
+
+                <div class="button">
+                    <button id="btn-recommencer" type="button">
+                        Recommencer
+                    </button>
+
+                    <button id="btn-suivant" type="button" class="btn-suivant">
+                        Suivant
+                    </button>
                 </div>
-            </article>
+
+            </div>
             <article class="panel votre_location" id="votre_location">
                 <div class="div">
-                  <P class="eyebrow">VOTRE LOCATION</P>
-                </div>  
+                    <P class="eyebrow">VOTRE LOCATION</P>
+                </div>
                 <div class="divdeux">
-
                 </div>
                 <div class="divtrois">
                     <p>Frais de récupération facturés une seule fois.</p>
                     <p class="paraghraf_carte">Une demande, sans paiement en ligne.</p>
-                    
                 </div>
             </article>
+
         </section>
     </main>
